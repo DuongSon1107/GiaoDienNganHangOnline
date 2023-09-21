@@ -1,0 +1,97 @@
+login - done
+update in4(home) - done (update home to fit currentAccount)
+register - done (check accountNumber - use AccountNumberCheck function in AccountList, if yes, reroll - use accountNumber = generator.nextInt((999999999 - 100000000) + 1) + 100000000;)
+
+
+Saving -......................
+Loan - ....................
+SendMoney - ................
+
+use JSON to create accountList (kiem tra xem co file JSON nafo ko) (First thing to do in main) and write accountList to file (last) 
+
+Shutdown, account list will be saved in the program.
+Chuyển màn set visible false
+Đăng xuất nhảy sang Login
+Chuyển kỳ hạn thay đổi lãi suất 
+
+Việc cần làm:
+
+Savings Tiết Kiệm (Cứu tôi AHHHHHHH). Có khả năng phải làm trực tiếp trên GUI savings Hiện đang có trùng Saving save Save saving
+Loans Vay tiền, lấy dữ liệu người dùng là string, parse sang double, truyền vào hàm bankLoan của Thiện bên Account 
+(cẩn thân vì cái này có Loán loán và Loan loan)
+Transfer Chuyển Tiền, lấy dữ liệu người dùng là string, parse sang double, truyền vào hàm transfer của Thiện bên Account. 
+Phải sử dụng hàm xác định số tài khoản người gửi đến, tham khảo hàm trong accountList
+JSON ghi lại các tài khoản trong accountList vào một file trong máy tính, khi mở lại sẽ đọc file JSON và chuyền lại vào accounList 
+(Hỏi Long cho cái này-đọc code của Long). Xác định ràng buộc khi hủy chương trình và sẽ lưu lại file JSON
+
+
+
+
+//UPDATE 4.30AM 2/2/2022
+*ĐÃ LÀm :
+-sửa lại các hàm update cho các GUI (nếu sửa lại thì báo t, ko lại lỗi :v)
+-ĐÃ Sửa lại để login nhận 1 Account List, không phải tự set Account List
+-ĐÃ sửa lại để home nhận vào cả Account List và Account
+!!mọi Gui đều có reference(một kiểo đường dẫn?) đến home(mà home chứa cả Account List và Account), có thể truy cập VD: home.currentAccount
+
+-Xong nạp tiền
+-Xong vay tiền
+-xong saving(ĐÃ đổi tên lại thành SavingGUI và thực hiện tiết kiệm thành công)
+-Đăng xuất nhảy sang Login
+-Chuyển kỳ hạn thay đổi lãi suất 
+
+*ĐÃ LÀm nhưng không chắc: Transfer
+-bằng kĩ năng đọc hiểu đã kết luận một cách mơ hồ là getAccount của AccountList là dựa trên index(Số thứ tự? không chắc :v)
+-ko rõ làm thế nào để lấy dc tài khoản đích dựa trên số Tài khoản đã nhập 
+-cũng bằng kĩ năng đọc hiểu đã kết luận mơ hồ một lần nữa là trong list chỉ có 1 Account nên không thể test thử xem có hoạt động chưa 
+-Hiện tại đang // (làm mờ/ẩn đoạn transfer đi) ở dòng 189-199 của SendMoney.java, cụ thể là trong một try catch do hàm transfer có throw Exception 
+
+*CHƯA LÀM
+-Lịch sử Giao Dịch
+-Bất cứ cái gì lquan đến JSON (có nguy cơ bị bận IRL nên không chắc chắn có đủ thời gian ngồi học json và áp dụng trong 1 ngày dc, 
+có một mong muốn chân thành là
+đùn đẩy dc json cho ng khác! ONEGAI PỜ-LE-A-SE! Xin Chân Thành Cảm Ơn! :))
+
+*LƯU Ý
+-Nên check lại các hàm xét mật khẩu ở vay tiền, nạp tiền (Do không rõ cách mà Account đối chiếu mật khẩu)
+-Hầu hết các input của GUI đều đã có hàm get(kể cả ngày sinh) và nếu ko nhầm thì đều bắt đầu bằng "get"
+, nên gõ thử chữ "get" xem có hiện ra dc hàm get mong muốn ko trc khi tự get,
+nếu không có là do sai sót và nên tự get :).
+
+
+
+//UPDATE 8.30AM 2/2/2022
+*ĐÃ LÀM
+-Xong lịch sử giao dịch
+-Xong Chắc chắn Transfer (Dựa trên số điện thoại chứ không phải số tài khoản, 
+dùng PasswordCheck để chọn đc tài khoản đích, 
+do cáchd mà hàm PasswordCheck hoạt động và không thấy một hàm
+nào khác để lấy được tài khoản đích dựa trên số TK,
+thêm một hàm PasswordCheck nữa(override) chỉ xét số điện thoại để chỉnh ra currentIndex -> GetAccount(getCurrentIndex))
+-Chỉnh lại Giao diện Transfer theo số ĐT
+-Chắc chắn xong các hàm xét mk
+
+*Chưa làm
+-JSOOOOONNNNNNNNNNN
+
+
+
+//UPDATE 12.44PM 2/2/2022
+- Hoàn thiện dc mọi yêu cầu đề ra (Trừ vc xét xem có file Json ko :v )
+!!!!!!!!!!!!OMEDETO GOZAIMASHU!!!!!!!!!!!!!!!!!!!!
+
+*Lưu ý
+- file Accounts.json đã bị nghịch để test qua các chức năng, khuyến khích lập một Accounts.json mới với các Accounts mới
+  + Hướng dẫn lập:-1)Để ý TODO:
+                   0)Xoá Account.json cũ
+                   1)Tạo các Account
+                   2)Add các Accounts vào một ArrayList
+                   3)Bỏ bôi mờ(//) "Tạo lần đầu" dòng 78-86
+                   4)Chạy để khởi tạo file Json
+                   5) Tắt cửa sổ Login 
+                   6) Làm mờ lại (//) đoạn "Tạo lần đầu" dòng 78-86, Do đã có file Accounts.json mới
+                   7) Chạy và dùng như bình thường
+
+ 
+      
+

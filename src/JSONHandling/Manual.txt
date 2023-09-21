@@ -1,0 +1,9 @@
+When start:
+	Load the file Account.json using JSONReader.java into a list of AccountInfo
+	Convert the AccountInfo list into an Account list using AccountInfoToAccount if needed
+	
+Before end:
+	Convert the Account list into an AccountInfo list using AccountToAccountInfo.java if needed
+	Write the AccountInfo list to the Accounts.json file
+	
+Note: Everything has been designed so that usage is immediate and simple. Demonstration included. 
